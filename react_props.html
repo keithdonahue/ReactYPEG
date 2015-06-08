@@ -1,0 +1,67 @@
+
+<html>
+  <head>
+    <title>Hello React</title>
+    <style type="text/css">
+
+      body {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        margin: 0 0 1px 0;
+        display: block;
+        padding: 15px;
+        color: #444;
+        background-color: #eee;
+        font-family: arial, verdana, sans-serif;
+        -webkit-border-size: border-box;
+        border-size: border-box;
+      }
+    </style>
+    <script src="https://fb.me/react-0.13.3.js"></script>
+    <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
+  </head>
+  <body>
+    <div id="content"></div>
+    <script type="text/jsx">
+      // Props are immutable
+      // Parent Component
+      var LikeList = React.createClass({
+        render: function() {
+          return (
+            <ul>
+              <LikeListItem text='turtles' />
+              <LikeListItem text='ukuleles' />
+              <LikeListItem text='money' />
+              <LikeListItem text='Orange Crush' />
+            </ul>
+          );
+        }
+      });
+
+      // Child Component
+      var LikeListItem = React.createClass({
+        render: function() {
+          return (
+            <li>
+              {this.props.text}
+            </li>
+          );
+        }
+      });
+
+      React.render(<LikeList />, document.getElementById('content'));
+
+    </script>
+  </body>
+</html>

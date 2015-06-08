@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>super simple d3 line</title>
+<style>
+.line {
+  fill: none;
+  stroke: #00F;
+  stroke-width: 2px;
+}
+</style>
+</head>
+<body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="http://d3js.org/d3.v2.js"></script>
+<script>
+
+var data = [0,2,4,6,8,20,8,6,4,2,4,6,8,6,4,6,6,6,6],
+width = 100,
+height = 180,
+x = d3.scale.linear().domain([0, data.length]).range([0, width]),
+y = d3.scale.linear().domain([0, d3.max(data)]).range([height,0]);
+
+/*
+  add a visualisation, 
+  select the body tag, 
+  join the data array to to the body tag for our next data driven moves,
+  append an svg container tag, 
+  give it the right width,
+  give it the right height as well,
+*/
+var visualisation = d3
+.select("body")
+.data([data])
+.append("svg");
+
+/*
+this is the line to put on the graph
+append a path tag as a child of the svg tag we added to the body tag,
+apply css style to make the line blue
+*/
+visualisation
+.append("path")
+    .attr("class", "line")
+    .attr("d", d3.svg.line()
+    .x(function(d,i) {return x(i);})
+    .y(function(d) {return y(d); }));
+</script>
+</body>
+</html> 
